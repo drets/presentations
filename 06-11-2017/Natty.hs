@@ -1,9 +1,12 @@
+-- Code is written by kcsongor
+-- Paper which should help to understand the code: “Hasochism”
+-- (https://pdfs.semanticscholar.org/8b79/2f78825bad68cf7a2267ea03db5b4273df33.pdf)
+
 {-# LANGUAGE DataKinds           #-}
 {-# LANGUAGE GADTs               #-}
 {-# LANGUAGE KindSignatures      #-}
 {-# LANGUAGE ScopedTypeVariables #-}
 {-# LANGUAGE TypeApplications    #-}
-
 
 -- Nats
 data Nat = Z | S Nat
@@ -13,7 +16,6 @@ data NatSing (n :: Nat) where
   ZSing :: NatSing 'Z
   SSing :: NatSing n -> NatSing ('S n)
 
--- Numbers less than n
 data Fin (n :: Nat) where
   FZ :: Fin ('S n)
   FS :: Fin n -> Fin ('S n)
